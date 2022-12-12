@@ -23,7 +23,7 @@ export const contactsSlice = createSlice({
       state.contacts.error = '';
     });
     builder.addCase(fetchContacts.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.contacts.isLoading = false;
       state.contacts.error = null;
       state.contacts.items = action.payload;
     });
@@ -49,7 +49,7 @@ export const contactsSlice = createSlice({
       state.contacts.error = '';
     });
     builder.addCase(deleteContact.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.contacts.isLoading = false;
       state.contacts.error = null;
       const contactId = action.payload;
       state.contacts.items = state.contacts.items.filter(

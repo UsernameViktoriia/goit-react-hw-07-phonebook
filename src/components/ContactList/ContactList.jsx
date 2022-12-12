@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 export const ContactList = () => {
   const contacts = useSelector(state => state.contactsData.contacts.items);
+  const isLoading = useSelector(state => state.contactsData.contacts.isLoading);
   const filter = useSelector(state => state.filter.filter);
   const filterContacts = () => {
     return (
@@ -15,9 +16,11 @@ export const ContactList = () => {
   };
   return (
     <Contacts>
-      {filterContacts().map(contact => (
-        <ContactItem key={contact.id} contact={contact} />
-      ))}
+      {isLoading
+        ? 'Loading...'
+        : filterContacts().map(contact => (
+            <ContactItem key={contact.id} contact={contact} />
+          ))}
     </Contacts>
   );
 };
