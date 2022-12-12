@@ -51,7 +51,7 @@ export const deleteContact = createAsyncThunk(
   // тому що в цій операції він нам не потрібен
   async (contactId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/contacts/${contactId}`);
+      await axios.delete(`/contacts/${contactId}`);
       // При успішному запиті повертаємо проміс із даними
       return contactId;
     } catch (e) {
